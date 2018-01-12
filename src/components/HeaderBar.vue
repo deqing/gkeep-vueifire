@@ -5,7 +5,7 @@
     div
       span {{user.userTitle}}
 
-      img(v-bind:src="user.imageUrl" alt="{{user.userTitle}}")
+      #img(v-bind:src="user.imageUrl" alt="{{user.userTitle}}")
 
       a(href="#" @click.prevent="signOut")
         i.fa.fa-sign-out(aria-hidden="true")
