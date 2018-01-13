@@ -2,12 +2,14 @@
   div.backdrop(v-if="note" transition="modal" @click="dismissModal")
     form.edit-note(@submit.prevent="update" @click.stop="")
       input.title(v-model="note.title" placeholder="Title")
-
       textarea(name="content" v-model="note.content" placeholder="Text goes here..." rows="8")
 
       button(type="button" @click="remove")
         i.fa.fa-trash-o(aria-hidden="true")
-      button(type="submit") Done
+
+      div.right-block
+        div.letter-counts 字数: {{note.content.length}}
+        button(type="submit") Done
 </template>
 <script>
 import noteRepository from '../../data/NoteRepository'
@@ -67,10 +69,12 @@ export default {
     color: #fff
     border: none
     border-radius: 3px
-    opacity: 1
+    opacity: 0.8
     cursor: pointer
     padding: 4px 6px
-    margin: 0
+    margin: 0 0 0 5px
+    &:hover, &:focus
+      opacity: 1
 
   button
     background: none
@@ -80,10 +84,18 @@ export default {
     cursor: pointer
     transition: opacity .5s
     margin: 0 4px 0 0
-
     &:hover, &:focus
       opacity: 1
 
+  .right-block
+    float: right
+    font-size: 13px
+    opacity: 0.6
+    display: inline-block
+  
+  .letter-counts
+    margin: 6px
+    display: inline-block
 
 /* modal transition */
 .modal-transition
